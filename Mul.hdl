@@ -1,0 +1,16 @@
+CHIP Mul{
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    Abs (in=a, out=absa, flipped=flipa);
+    Abs (in=b, out=absb, flipped=flipb);
+
+    PMul (a=absa, b=absb, out=absout);
+    Negator (in=absout, out=negativeout);
+
+    Xor (a=flipa, b=flipb, out=flip);
+
+    Mux16 (a=absout, b=negativeout, sel=flip, out=out);
+
+}

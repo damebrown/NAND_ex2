@@ -1,0 +1,9 @@
+CHIP Abs{
+    IN in[16];
+    OUT out[16], flipped;
+     
+    PARTS:
+	Negator (in=in, out=negative);
+	Mux16 (a=in, b=negative, sel=in[15], out=out);
+	And (a=true, b=in[15], out=flipped);
+}

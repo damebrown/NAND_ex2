@@ -1,0 +1,8 @@
+CHIP Negator{
+    IN in[16];
+    OUT out[16];
+     
+    PARTS:
+	Not16 (in=in, out=temp);
+	Add16 (a=temp, b[0]=true, out=out);
+}

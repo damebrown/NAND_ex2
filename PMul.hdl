@@ -1,0 +1,59 @@
+CHIP PMul{
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+
+    // shiftX will hold the value of 'b' after x shift lefts from 1 to 15
+    ShiftLeft (in=b, out=shift1);
+    ShiftLeft (in=shift1, out=shift2);
+    ShiftLeft (in=shift2, out=shift3);
+    ShiftLeft (in=shift3, out=shift4);
+    ShiftLeft (in=shift4, out=shift5);
+    ShiftLeft (in=shift5, out=shift6);
+    ShiftLeft (in=shift6, out=shift7);
+    ShiftLeft (in=shift7, out=shift8);
+    ShiftLeft (in=shift8, out=shift9);
+    ShiftLeft (in=shift9, out=shift10);
+    ShiftLeft (in=shift10, out=shift11);
+    ShiftLeft (in=shift11, out=shift12);
+    ShiftLeft (in=shift12, out=shift13);
+    ShiftLeft (in=shift13, out=shift14);
+    ShiftLeft (in=shift14, out=shift15);
+
+    //resultX will hold b time 2^x if a[x] is 1 and 0 else
+    Mux16 (a=false, b=b, sel=a[0], out=result0);
+    Mux16 (a=false, b=shift1, sel=a[1], out=result1);
+    Mux16 (a=false, b=shift2, sel=a[2], out=result2);
+    Mux16 (a=false, b=shift3, sel=a[3], out=result3);
+    Mux16 (a=false, b=shift4, sel=a[4], out=result4);
+    Mux16 (a=false, b=shift5, sel=a[5], out=result5);
+    Mux16 (a=false, b=shift6, sel=a[6], out=result6);
+    Mux16 (a=false, b=shift7, sel=a[7], out=result7);
+    Mux16 (a=false, b=shift8, sel=a[8], out=result8);
+    Mux16 (a=false, b=shift9, sel=a[9], out=result9);
+    Mux16 (a=false, b=shift10, sel=a[10], out=result10);
+    Mux16 (a=false, b=shift11, sel=a[11], out=result11);
+    Mux16 (a=false, b=shift12, sel=a[12], out=result12);
+    Mux16 (a=false, b=shift13, sel=a[13], out=result13);
+    Mux16 (a=false, b=shift14, sel=a[14], out=result14);
+    Mux16 (a=false, b=shift15, sel=a[15], out=result15);
+
+    
+    // adding all together
+    Add16 (a=result0, b=result1, out=sum1);
+    Add16 (a=sum1, b=result2, out=sum2);
+    Add16 (a=sum2, b=result3, out=sum3);
+    Add16 (a=sum3, b=result4, out=sum4);
+    Add16 (a=sum4, b=result5, out=sum5);
+    Add16 (a=sum5, b=result6, out=sum6);
+    Add16 (a=sum6, b=result7, out=sum7);
+    Add16 (a=sum7, b=result8, out=sum8);
+    Add16 (a=sum8, b=result9, out=sum9);
+    Add16 (a=sum9, b=result10, out=sum10);
+    Add16 (a=sum10, b=result11, out=sum11);
+    Add16 (a=sum11, b=result12, out=sum12);
+    Add16 (a=sum12, b=result13, out=sum13);
+    Add16 (a=sum13, b=result14, out=sum14);
+    Add16 (a=sum14, b=result15, out=out);
+}

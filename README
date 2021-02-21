@@ -1,0 +1,31 @@
+michaelbere, daniel.brown1
+===============================================================================
+Michael Berelejis, ID 203527973, michael.berelejis@mail.huji.ac.il
+Daniel Brown, ID 311340723, daniel.brown1@mail.huji.ac.il
+===============================================================================
+
+                           Project 2 -  Boolean Arithmetic
+                           -----------------------------
+  
+
+Submitted Files
+---------------
+README - description of the project
+Add16.hdl - Adds two 16-bit values.
+ALU.hdl - The ALU (Arithmetic Logic Unit).
+FullAdder.hdl - Computes the sum of three bits.
+HalfAdder.hdl - Computes the sum of two bits.
+Inc16.hdl - 16-bit incrementer.
+Mul.hdl - Multiplication of two 16-bit numbers chip.
+Aid chips for Mul:
+	Abs.hdl - Returns the absolute value of a 16-bit number and a flag indicating the number's original sign.
+	PMul.hdl - Multiplies two positive numbers.
+	Negator.hdl - Returns the the 16-bit number times -1.
+ShiftLeft.hdl - Multiplies a 16-bit number by 2.
+ShiftRight.hdl - Divides a 16-bit number by 2.
+
+Remarks
+-------
+We implemented 3 different chips that are used as inside chips for the Multiplication chip (as described above).
+In our implementation, we turn the two numbers to positive numbers using the Abs chip, multiply them using the PMul
+chip, and than use the Negator chip according to the input's original sign inorder to fix the result's sign.
